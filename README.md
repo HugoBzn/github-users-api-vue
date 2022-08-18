@@ -1,4 +1,4 @@
-# github-users-api-vue
+# github-users-api-vue - HugoBzn 🦖
 
 This template should help get you started developing with Vue 3 in Vite.
 
