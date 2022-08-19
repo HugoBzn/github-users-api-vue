@@ -1,6 +1,6 @@
-# github-users-api-vue - HugoBzn 🦖
+# Github-Users-api-vue - HugoBzn 🦖
 
-This template should help get you started developing with Vue 3 in Vite.
+Se hace uso de lo aprendido en VUE para lograr hacer este repositorio con options API, consumiendo una API de Strapi CMS de manera local.
 
 ## Recommended IDE Setup
 
