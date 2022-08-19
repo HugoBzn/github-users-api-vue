@@ -9,34 +9,39 @@ let githubUserCardComponent = {
     username: {
       type: String,
       required: true,
-      default: "❌ Username not provided",
+      default: "❌ id not provided",
     },
   },
   // Estado del componente
   data() {
     return {
       user: {},
+      image: {},
     };
   },
   // Propiedades computadas
   computed: {
     formatedCreatedAt() {
-      return new Date(this.user["created_at"]).toDateString();
+      return new Date(this.user["createdAt"]).toDateString();
     },
   },
   // Usando el hook de creacion para obtener datos
   created() {
     // 1. Obtener el nombre del usuario
     // de la propiedad "username" y lo guardaremos
-    // en una constante llamada "name"
-    const name = this.username;
+    // en una constante llamada "id"
+    const id = this.username;
 
     // Hacer un fetch de la informacion del API
     /* eslint-disable no-undef */
-    axios.get(`https://api.github.com/users/${name}`).then((res) => {
-      // Codigo que quiero ejecutar cuando haya respuesta de github
-      this.user = res.data;
-    });
+    axios
+      .get(`http://localhost:1337/api/github-profiles/${id}/?populate=*`)
+      .then((res) => {
+        // Codigo que quiero ejecutar cuando haya respuesta de github
+        this.user = res.data.data.attributes;
+        this.image =
+          res.data.data.attributes.avatar_image.data.attributes.formats.thumbnail;
+      });
   },
 };
 
@@ -44,7 +49,7 @@ let githubUserCardComponent = {
 Vue.createApp({
   data() {
     return {
-      users: ["HugoBzn", "rivalcoba"],
+      users: ["1", "2", "3", "4"],
     };
   },
 })
